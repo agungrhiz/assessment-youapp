@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: db_mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - '27017:27017'
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq:4.0.4-management
+    container_name: rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
