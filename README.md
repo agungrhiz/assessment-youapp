@@ -56,3 +56,15 @@ $ docker-compose up --build
 
 - POST: `/api/sendMessage`
 - GET: `/api/viewMessages`
+
+## Tech Stack
+
+**Server:** NestJS, Node.js, TypeScript, MongoDB, RabbitMQ, Docker, Swagger.
+
+## Acknowledgements
+
+- [NestJS Documentation](https://docs.nestjs.com) for comprehensive guides and best practices.
+- [MongoDB Documentation](https://www.mongodb.com/docs/) for database setup and usage.
+- [RabbitMQ Tutorials](https://www.rabbitmq.com/tutorials.html) for message broker implementation.
+- [Swagger Documentation](https://swagger.io/docs/) for API documentation setup.
+- [Docker Documentation](https://docs.docker.com) for containerization and deployment.
