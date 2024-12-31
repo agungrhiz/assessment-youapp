@@ -1,25 +1,39 @@
-version: '3.5'
+version: '3.7'
 
 services:
   mongo:
     image: mongo:latest
-    container_name: db_mongo
-    volumes:
-      - ./data:/data/db
+    container_name: mongo-youapp
     ports:
-      - '27017:27017'
+      - "27017:27017"
     networks:
-      - app-network
+      - my-network
 
   rabbitmq:
     image: rabbitmq:4.0.4-management
-    container_name: rabbitmq
+    container_name: rabbitmq-youapp
     ports:
-      - '5672:5672'
-      - '15672:15672'
+      - "15672:15672"
+      - "5672:5672"
     networks:
-      - app-network
+      - my-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: assessment-youapp
+    container_name: assessment-youapp
+    ports:
+      - "3000:3000"
+    networks:
+      - my-network
+    depends_on:
+      - mongo
+      - rabbitmq
+    env_file:
+      - .env
 
 networks:
-  app-network:
+  my-network:
     driver: bridge
